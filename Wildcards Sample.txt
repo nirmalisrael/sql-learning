@@ -1,0 +1,93 @@
+----- WILDCARDS IN SQL -----
+
+LIKE Operator - used in WHERE clause...
+
+	   SYMBOLS
+	   --------
+	%(percentage sign)	- 0 or more characters
+	_(underscore)		- signle character
+	[](Square brackets)	- Give options like A or B..  (within any place..)
+	^(Caret)			- it is used in [] Square brackets ... like `~ '^[A-F]'`;
+	-					- Represents any single character within the specified range
+	
+	
+SELECT * FROM student;
+ id |      name      | age 
+----+----------------+-----
+  2 | Santhosh J     |  19
+  3 | Ashik          |  18
+  1 | Nirmal Israel  |  19
+  4 | Julius         |  20
+  5 | Durai          |  19
+  6 | Karthigaipriya |  21
+  7 | Balaji         |  18
+  8 | Karthick       |  18
+  9 | Mariyaraj      |  19
+ 10 | Denish         |  20
+
+
+SELECT * FROM student WHERE name LIKE 'K%';
+ id |      name      | age 
+----+----------------+-----
+  6 | Karthigaipriya |  21
+  8 | Karthick       |  18
+
+SELECT * FROM student WHERE name LIKE '%k';
+ id |   name   | age 
+----+----------+-----
+  3 | Ashik    |  18
+  8 | Karthick |  18
+  
+SELECT * FROM student WHERE name LIKE '%ar%';
+ id |      name      | age 
+----+----------------+-----
+  6 | Karthigaipriya |  21
+  8 | Karthick       |  18
+  9 | Mariyaraj      |  19
+
+SELECT * FROM student WHERE name LIKE '_a%';
+ id |      name      | age 
+----+----------------+-----
+  2 | Santhosh J     |  19
+  6 | Karthigaipriya |  21
+  7 | Balaji         |  18
+  8 | Karthick       |  18
+  9 | Mariyaraj      |  19
+
+SELECT * FROM student WHERE name LIKE 'N___________l';
+ id |     name      | age 
+----+---------------+-----
+  1 | Nirmal Israel |  19
+
+
+SELECT * FROM student WHERE name ~ '[NK]';  //we want to use '~' this operator instead of 'LIKE'.
+ id |      name      | age 
+----+----------------+-----
+  1 | Nirmal Israel  |  19
+  6 | Karthigaipriya |  21
+  8 | Karthick       |  18
+
+
+SELECT * FROM student WHERE name ~ '[A-K]';
+ id |      name      | age 
+----+----------------+-----
+  2 | Santhosh J     |  19
+  3 | Ashik          |  18
+  1 | Nirmal Israel  |  19
+  4 | Julius         |  20
+  5 | Durai          |  19
+  6 | Karthigaipriya |  21
+  7 | Balaji         |  18
+  8 | Karthick       |  18
+ 10 | Denish         |  20
+ 
+SELECT * FROM student WHERE name ~ '^[A-K]';
+ id |      name      | age 
+----+----------------+-----
+  3 | Ashik          |  18
+  4 | Julius         |  20
+  5 | Durai          |  19
+  6 | Karthigaipriya |  21
+  7 | Balaji         |  18
+  8 | Karthick       |  18
+ 10 | Denish         |  20

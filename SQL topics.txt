@@ -1,0 +1,64 @@
+SQL Basics:
+	Introduction to SQL
+	Understanding Databases
+	Creating Databases
+	Creating Tables
+	Basic SQL Commands (SELECT, INSERT, UPDATE, DELETE)
+	Using Wildcards in SQL Queries
+	
+SQL Queries:
+	Retrieving Data (SELECT statement)	
+	Filtering Data (WHERE clause)
+	Sorting Data (ORDER BY clause)	
+	Aggregating Data (GROUP BY clause)
+	Joining Tables (INNER JOIN, LEFT JOIN, RIGHT JOIN, FULL JOIN)
+	Sub queries
+	-- Common Table Expressions (CTEs)
+	
+SQL Functions:
+	Aggregate Functions (COUNT, SUM, AVG, MAX, MIN)
+	Scalar Functions (STRING functions, DATE functions, MATH functions)
+	Date and Time Functions
+	Conditional Functions (CASE statement)
+	
+SQL Constraints:
+	NOT NULL
+	UNIQUE
+	PRIMARY KEY
+	FOREIGN KEY
+	CHECK
+	DEFAULT
+	
+SQL Transactions and Concurrency:
+	ACID properties
+	Transactions (BEGIN TRANSACTION, COMMIT, ROLLBACK)
+	Locking Mechanisms
+	Isolation Levels
+	
+Advanced SQL Concepts:
+	Indexes
+	Views
+	Stored Procedures
+	Triggers
+	User-defined Functions
+	Recursive Queries
+	
+Performance Tuning and Optimization:
+	Query Optimization
+	Indexing Strategies
+	Using EXPLAIN to Analyze Query Performance
+	Normalization and Denormalization
+
+SQL Security:
+	Authentication and Authorization
+	User Roles and Permissions
+	SQL Injection Prevention
+	
+Database Design:
+	Normalization
+	Entity-Relationship Diagrams (ERD)
+	Data Modeling
+	
+Save point
+Sql relationship
+Sub query

@@ -1,0 +1,115 @@
+----- AGGREGATE FUNCTIONS ------
+
+SELECT * FROM student;
+ student_id |      name      | age 
+------------+----------------+-----
+          2 | Santhosh J     |  19
+          3 | Ashik          |  18
+          1 | Nirmal Israel  |  19
+          4 | Julius         |  20
+          5 | Durai          |  19
+          6 | Karthigaipriya |  21
+          7 | Balaji         |  18
+          8 | Karthick       |  18
+          9 | Mariyaraj      |  19
+         10 | Denish         |  20
+         12 | Suresh         |  19
+         13 | Vicky          |  20
+
+SELECT * FROM mark;
+ mark_id | student_id | tamil | english | maths
+---------+------------+-------+---------+-------
+       1 |          1 |    90 |      55 |    60
+       2 |          2 |    70 |      65 |    80
+       3 |          4 |    50 |      65 |    70
+       4 |          3 |    40 |      55 |    80
+       5 |          5 |    70 |      95 |    70
+       6 |          6 |    50 |      75 |    80
+       7 |          7 |    60 |      55 |    80
+       8 |          8 |    90 |      75 |    60
+       9 |          9 |    80 |      95 |    80
+      10 |         10 |    70 |      65 |    80
+      11 |         11 |    40 |      65 |    70
+      14 |         14 |    50 |      45 |    60
+	  
+	  
+=> COUNT()
+	-	It used to count the rows or values in the purticular relalation.
+	
+SELECT COUNT(*) FROM student;
+ count
+-------
+    12
+
+SELECT COUNT(age) AS no_of_students, age FROM student GROUP BY age;
+ no_of_students | age
+----------------+-----
+              5 |  19
+              1 |  21
+              3 |  20
+              3 |  18
+
+=> SUM()
+	- It calculates sum of values in a column.
+	
+SELECT student_id, SUM(tamil+english+maths) AS total_marks FROM mark GROUP BY student_id ORDER BY student_id;
+ student_id | total_marks
+------------+-------------
+          1 |         205
+          2 |         215
+          3 |         175
+          4 |         185
+          5 |         235
+          6 |         205
+          7 |         195
+          8 |         225
+          9 |         255
+         10 |         215
+         11 |         175
+         14 |         155
+		
+
+
+----------- VIEW IN SQL -----------  
+CREATE VIEW mark_view AS SELECT student_id, (tamil+english+maths) AS total_marks FROM mark;
+
+SELECT * FROM mark_view;
+ student_id | total_marks
+------------+-------------
+          1 |         205
+          2 |         215
+          4 |         185
+          3 |         175
+          5 |         235
+          6 |         205
+          7 |         195
+          8 |         225
+          9 |         255
+         10 |         215
+         11 |         175
+         14 |         155
+
+		
+=> AVG()
+	- It calculates the average of values in column.
+
+SELECT AVG(total_marks) FROM mark_view;
+         avg
+----------------------
+ 203.3333333333333333
+ 
+ => MAX()
+	- It returns the maximum value of given column.
+
+SELECT * FROM mark_view WHERE total_marks = (SELECT MAX(total_marks) FROM mark_view);
+ student_id | total_marks
+------------+-------------
+          9 |         255
+		  
+=> MIN()
+	-It returns minimum value of given column.
+	
+SELECT * FROM mark_view WHERE total_marks = (SELECT MIN(total_marks) FROM mark_view);
+ student_id | total_marks
+------------+-------------
+         14 |         155

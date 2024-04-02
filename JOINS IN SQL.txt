@@ -1,0 +1,160 @@
+
+------ JOINS IN SQL ------
+SELECT * FROM student;
+ student_id |      name      | age 
+------------+----------------+-----
+          2 | Santhosh J     |  19
+          3 | Ashik          |  18
+          1 | Nirmal Israel  |  19
+          4 | Julius         |  20
+          5 | Durai          |  19
+          6 | Karthigaipriya |  21
+          7 | Balaji         |  18
+          8 | Karthick       |  18
+          9 | Mariyaraj      |  19
+         10 | Denish         |  20
+         12 | Suresh         |  19
+         13 | Vicky          |  20
+
+SELECT * FROM mark;
+ mark_id | student_id | tamil | english | maths 
+---------+------------+-------+---------+-------
+       1 |          1 |    90 |      55 |    60
+       2 |          2 |    70 |      65 |    80
+       3 |          4 |    50 |      65 |    70
+       4 |          3 |    40 |      55 |    80
+       5 |          5 |    70 |      95 |    70
+       6 |          6 |    50 |      75 |    80
+       7 |          7 |    60 |      55 |    80
+       8 |          8 |    90 |      75 |    60
+       9 |          9 |    80 |      95 |    80
+      10 |         10 |    70 |      65 |    80
+      11 |         11 |    40 |      65 |    70
+
+	  
+	  
+=> INNER JOIN 
+	- It  Retrieves rows from both tables where there is a match between the columns in both tables.	
+
+SELECT * FROM student AS s INNER JOIN mark AS m ON s.student_id = m.student_id;
+ student_id |      name      | age | mark_id | student_id | tamil | english | maths 
+------------+----------------+-----+---------+------------+-------+---------+-------
+          1 | Nirmal Israel  |  19 |       1 |          1 |    90 |      55 |    60
+          2 | Santhosh J     |  19 |       2 |          2 |    70 |      65 |    80
+          4 | Julius         |  20 |       3 |          4 |    50 |      65 |    70
+          3 | Ashik          |  18 |       4 |          3 |    40 |      55 |    80
+          5 | Durai          |  19 |       5 |          5 |    70 |      95 |    70
+          6 | Karthigaipriya |  21 |       6 |          6 |    50 |      75 |    80
+          7 | Balaji         |  18 |       7 |          7 |    60 |      55 |    80
+          8 | Karthick       |  18 |       8 |          8 |    90 |      75 |    60
+          9 | Mariyaraj      |  19 |       9 |          9 |    80 |      95 |    80
+         10 | Denish         |  20 |      10 |         10 |    70 |      65 |    80
+
+=>	LEFT JOIN or (LEFT OUTER JOIN)
+	- Retrieves all rows from the left table (first table mentioned) and the matched rows from the right table.
+
+SELECT s.student_id, s.name, m.tamil, m.english, m.maths FROM student AS s LEFT JOIN mark AS m ON s.student_id = m.student_id;
+ student_id |      name      | tamil | english | maths 
+------------+----------------+-------+---------+-------
+          1 | Nirmal Israel  |    90 |      55 |    60
+          2 | Santhosh J     |    70 |      65 |    80
+          4 | Julius         |    50 |      65 |    70
+          3 | Ashik          |    40 |      55 |    80
+          5 | Durai          |    70 |      95 |    70
+          6 | Karthigaipriya |    50 |      75 |    80
+          7 | Balaji         |    60 |      55 |    80
+          8 | Karthick       |    90 |      75 |    60
+          9 | Mariyaraj      |    80 |      95 |    80
+         10 | Denish         |    70 |      65 |    80
+         12 | Suresh         |       |         |      
+         13 | Vicky          |       |         |      
+
+=> RIGHT JOIN or RIGHT OUTER JOIN
+	-  Retrieves all rows from the right table (second table mentioned) and the matched rows from the left table.
+	
+SELECT s.student_id, s.name, m.mark_id, m.tamil, m.english, m.maths FROM student AS s RIGHT JOIN mark AS m ON s.student_id = m.student_id;
+ student_id |      name      | mark_id | tamil | english | maths 
+------------+----------------+---------+-------+---------+-------
+          1 | Nirmal Israel  |       1 |    90 |      55 |    60
+          2 | Santhosh J     |       2 |    70 |      65 |    80
+          4 | Julius         |       3 |    50 |      65 |    70
+          3 | Ashik          |       4 |    40 |      55 |    80
+          5 | Durai          |       5 |    70 |      95 |    70
+          6 | Karthigaipriya |       6 |    50 |      75 |    80
+          7 | Balaji         |       7 |    60 |      55 |    80
+          8 | Karthick       |       8 |    90 |      75 |    60
+          9 | Mariyaraj      |       9 |    80 |      95 |    80
+         10 | Denish         |      10 |    70 |      65 |    80
+            |                |      11 |    40 |      65 |    70
+            |                |      14 |    50 |      45 |    60
+			
+=> FULL JOIN or FULL OUTER JOIN
+	- Retrieves all rows from both tables and combines them. 	
+	
+SELECT s.student_id, s.name, m.tamil, m.english, m.maths FROM student AS s FULL JOIN mark AS m ON s.student_id = m.student_id;
+ student_id |      name      | tamil | english | maths 
+------------+----------------+-------+---------+-------
+          1 | Nirmal Israel  |    90 |      55 |    60
+          2 | Santhosh J     |    70 |      65 |    80
+          4 | Julius         |    50 |      65 |    70
+          3 | Ashik          |    40 |      55 |    80
+          5 | Durai          |    70 |      95 |    70
+          6 | Karthigaipriya |    50 |      75 |    80
+          7 | Balaji         |    60 |      55 |    80
+          8 | Karthick       |    90 |      75 |    60
+          9 | Mariyaraj      |    80 |      95 |    80
+         10 | Denish         |    70 |      65 |    80
+            |                |    40 |      65 |    70
+            |                |    50 |      45 |    60
+         12 | Suresh         |       |         |      
+         13 | Vicky          |       |         |      
+
+=> CROSS JOIN 
+	- It combines each row from the first table with every row from the second table.
+	
+SELECT * FROM certificate;
+          name          
+------------------------
+ Transfer certificate
+ Graduation certificate
+ Marksheet
+
+
+SELECT s.name, c.name FROM student AS s CROSS JOIN certificate AS c;
+      name      |          name          
+----------------+------------------------
+ Santhosh J     | Transfer certificate
+ Ashik          | Transfer certificate
+ Nirmal Israel  | Transfer certificate
+ Julius         | Transfer certificate
+ Durai          | Transfer certificate
+ Karthigaipriya | Transfer certificate
+ Balaji         | Transfer certificate
+ Karthick       | Transfer certificate
+ Mariyaraj      | Transfer certificate
+ Denish         | Transfer certificate
+ Suresh         | Transfer certificate
+ Vicky          | Transfer certificate
+ Santhosh J     | Graduation certificate
+ Ashik          | Graduation certificate
+ Nirmal Israel  | Graduation certificate
+ Julius         | Graduation certificate
+ Durai          | Graduation certificate
+ Karthigaipriya | Graduation certificate
+ Balaji         | Graduation certificate
+ Karthick       | Graduation certificate
+ Mariyaraj      | Graduation certificate
+ Denish         | Graduation certificate
+ Suresh         | Graduation certificate
+ Vicky          | Graduation certificate
+ Santhosh J     | Marksheet
+ Ashik          | Marksheet
+ Nirmal Israel  | Marksheet
+ Julius         | Marksheet
+ Durai          | Marksheet
+ Karthigaipriya | Marksheet
+ Balaji         | Marksheet
+ Karthick       | Marksheet
+ Mariyaraj      | Marksheet
+ Denish         | Marksheet
+ Suresh         | Marksheet

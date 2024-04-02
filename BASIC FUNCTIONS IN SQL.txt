@@ -1,0 +1,103 @@
+------------ BASIC FUNCTIONS IN SQL ------------
+
+====== STRING FUNCTIONS =======
+
+-> UPPER()
+
+	SELECT student_id, UPPER(name) AS student_name FROM student;
+	 student_id |  student_name
+	------------+----------------
+			  2 | SANTHOSH J
+			  3 | ASHIK
+			  1 | NIRMAL ISRAEL
+			  4 | JULIUS
+			  5 | DURAI
+			  6 | KARTHIGAIPRIYA
+			  7 | BALAJI
+			  8 | KARTHICK
+			  9 | MARIYARAJ
+			 10 | DENISH
+			 12 | SURESH
+			 13 | VICKY
+			 
+-> LOWER()
+
+	SELECT student_id, LOWER(name) AS student_name FROM student;
+	 student_id |  student_name
+	------------+----------------
+			  2 | santhosh j
+			  3 | ashik
+			  1 | nirmal israel
+			  4 | julius
+			  5 | durai
+			  6 | karthigaipriya
+			  7 | balaji
+			  8 | karthick
+			  9 | mariyaraj
+			 10 | denish
+			 12 | suresh
+			 13 | vicky
+			 
+-> CONCAT()	
+
+	SELECT CONCAT(name, ' ', age) FROM student;
+		  concat
+	-------------------
+	 Santhosh J 19
+	 Ashik 18
+	 Nirmal Israel 19
+	 Julius 20
+	 Durai 19
+	 Karthigaipriya 21
+	 Balaji 18
+	 Karthick 18
+	 Mariyaraj 19
+	 Denish 20
+	 Suresh 19
+	 Vicky 20
+	 
+-> SUBSTRING()
+	 
+	 SELECT SUBSTRING(name, 1, 5) FROM student;
+	 substring
+	-----------
+	 Santh
+	 Ashik
+	 Nirma
+	 Juliu
+	 Durai
+	 Karth
+	 Balaj
+	 Karth
+	 Mariy
+	 Denis
+	 Sures
+	 Vicky
+ 
+ 
+-> TRIM()
+
+SELECT TRIM('   Hello World   ');
+    btrim
+-------------
+ Hello World
+
+
+-> LENGTH()
+
+SELECT name, LENGTH(name) AS length_of_name FROM student;
+      name      | length_of_name
+----------------+----------------
+ Santhosh J     |             10
+ Ashik          |              5
+ Nirmal Israel  |             13
+ Julius         |              6
+ Durai          |              5
+ Karthigaipriya |             14
+ Balaji         |              6
+ Karthick       |              8
+ Mariyaraj      |              9
+ Denish         |              6
+ Suresh         |              6
+ Vicky          |              5
+	

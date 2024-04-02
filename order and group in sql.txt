@@ -1,0 +1,47 @@
+------ ORDER BY in SQL ------
+
+ - sorting the result set by ASC or DESC order.
+ 
+SELECT * FROM student ORDER BY age;
+ id |      name      | age 
+----+----------------+-----
+  3 | Ashik          |  18
+  8 | Karthick       |  18
+  7 | Balaji         |  18
+  2 | Santhosh J     |  19
+  5 | Durai          |  19
+  9 | Mariyaraj      |  19
+  1 | Nirmal Israel  |  19
+ 10 | Denish         |  20
+  4 | Julius         |  20
+  6 | Karthigaipriya |  21
+
+SELECT * FROM student ORDER BY id DESC;
+ id |      name      | age 
+----+----------------+-----
+ 10 | Denish         |  20
+  9 | Mariyaraj      |  19
+  8 | Karthick       |  18
+  7 | Balaji         |  18
+  6 | Karthigaipriya |  21
+  5 | Durai          |  19
+  4 | Julius         |  20
+  3 | Ashik          |  18
+  2 | Santhosh J     |  19
+  1 | Nirmal Israel  |  19
+
+==============================================================
+
+------ GROUP BY in SQL -----
+
+	- it is used to set number of rows to set a group by aggregate function.
+	- must use aggregate function for GROUP BY clause.
+	
+	
+SELECT count(id) AS number_of_students, age FROM student GROUP BY age;
+ number_of_students | age 
+--------------------+-----
+                  4 |  19
+                  1 |  21
+                  2 |  20
+                  3 |  18

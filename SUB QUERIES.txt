@@ -1,0 +1,42 @@
+------ SUB QUERIES IN SQL ------
+
+SELECT * FROM student;
+ student_id |      name      | age 
+------------+----------------+-----
+          2 | Santhosh J     |  19
+          3 | Ashik          |  18
+          1 | Nirmal Israel  |  19
+          4 | Julius         |  20
+          5 | Durai          |  19
+          6 | Karthigaipriya |  21
+          7 | Balaji         |  18
+          8 | Karthick       |  18
+          9 | Mariyaraj      |  19
+         10 | Denish         |  20
+         12 | Suresh         |  19
+         13 | Vicky          |  20
+
+SELECT * FROM mark;
+ mark_id | student_id | tamil | english | maths 
+---------+------------+-------+---------+-------
+       1 |          1 |    90 |      55 |    60
+       2 |          2 |    70 |      65 |    80
+       3 |          4 |    50 |      65 |    70
+       4 |          3 |    40 |      55 |    80
+       5 |          5 |    70 |      95 |    70
+       6 |          6 |    50 |      75 |    80
+       7 |          7 |    60 |      55 |    80
+       8 |          8 |    90 |      75 |    60
+       9 |          9 |    80 |      95 |    80
+      10 |         10 |    70 |      65 |    80
+      11 |         11 |    40 |      65 |    70
+	  
+	  
+SELECT name FROM student WHERE student_id IN (SELECT student_id FROM mark WHERE (tamil + english + maths)/3 > 70);
+    name    
+------------
+ Santhosh J
+ Durai
+ Karthick
+ Mariyaraj
+ Denish
